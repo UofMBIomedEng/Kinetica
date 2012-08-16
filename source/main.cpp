@@ -5,23 +5,27 @@ bool shutdownprogram = 0;
 #include "projectsetup.h"
 #include "projectloop.h"
 
+
 int main(int argc,char **argv){
 
 	for(int i=1;i<argc;i++){
 		if(!strcmp(argv[i],"/TEST")) test=atoi(argv[i+1]);
     }
-
+	
 	loadgenericsettings();									//load the generic settings
 
 	loadsettings();											//load the project specific settings
 
 	genericsetup();											//generic setup
-
+	
+	projectsetup();											//setup for the project
+	
 	dashsetup();											//setup the dashboard
 
-	projectsetup();											//setup for the project
-
+	starttime=(double)SDL_GetTicks();						//get game start time
+	
 	//game loop
+	
 	while(!shutdownprogram){
 
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);	//clear the screen

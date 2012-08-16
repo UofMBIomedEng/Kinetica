@@ -1,5 +1,13 @@
 SDL_Rect dash_button_frame[2][9];
 
+GLuint spritesheettexture = NULL;
+GLuint tilebrighttexture = NULL;
+GLuint tiledarktexture = NULL;
+
+float wallbordertexturecoords[8];
+
+
+
 float dash_button_texturecoords[2][9][8];
 
 void setupdashbutton(){
@@ -80,4 +88,54 @@ bool dashbutton(int x, int y,int w,int h,bool center,bool clickable,char* text){
 
 	return clicked;
 
+}
+
+// added for the progress bar
+
+void init_progressbar(void){
+
+	spritesheettexture=loadtexture((char*)"Media/spritesheettexture.png",mipmapping);
+	tilebrighttexture=loadtexture((char*)"Media/tilebrighttexture.png",mipmapping);
+	tiledarktexture=loadtexture((char*)"Media/tiledarktexture.png",mipmapping);
+
+}
+
+void drawtileblack(float posx1,float posy1,float posx2,float posy2){
+	draw2dquad2(
+		posx1,posy1,
+		posx2-posx1,posy2-posy1,
+		wallbordertexturecoords,
+		0,0.f);
+}
+
+void drawtilebright(float posx1,float posy1,float posx2,float posy2){
+	glBindTexture(GL_TEXTURE_2D,tilebrighttexture);
+	float scale=1.f/64.f;
+	float temptexturecoords[] = {
+		posx1*scale,posy2*scale,
+		posx2*scale,posy2*scale,
+		posx2*scale,posy1*scale,
+		posx1*scale,posy1*scale,};
+	draw2dquad2(posx1,posy1,posx2-posx1,posy2-posy1,temptexturecoords,0,0.f);
+	
+	glBindTexture(GL_TEXTURE_2D,spritesheettexture);
+}
+
+void drawtiledark(float posx1,float posy1,float posx2,float posy2){
+	glBindTexture(GL_TEXTURE_2D,tiledarktexture);
+	float scale=1.f/64.f;
+	float temptexturecoords[] = {
+		posx1*scale,posy2*scale,
+		posx2*scale,posy2*scale,
+		posx2*scale,posy1*scale,
+		posx1*scale,posy1*scale,};
+	draw2dquad2(posx1,posy1,posx2-posx1,posy2-posy1,temptexturecoords,0,0.f);
+	glBindTexture(GL_TEXTURE_2D,spritesheettexture);
+}
+
+void drawprogressbar(float posx1,float posy1,float posx2,float posy2,float border,float progress){
+	drawtileblack(posx1-border,posy1-border,posx2+border,posy2+border);
+	drawtiledark(posx1,posy1,posx2,posy2);
+	progress=posx2*progress+posx1*(1.f-progress);
+	drawtilebright(posx1,posy1,progress,posy2);
 }

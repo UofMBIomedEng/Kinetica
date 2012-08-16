@@ -13,7 +13,7 @@ void save(){
 	fwrite(&worldtileviewrange,sizeof(worldtileviewrange),1,fp);
 	fwrite(&usetextures,sizeof(usetextures),1,fp);
 	fwrite(&ghostmode,sizeof(ghostmode),1,fp);
-	fwrite(&collectablesfound,sizeof(collectablesfound),1,fp);
+	//fwrite(&collectablesfound,sizeof(collectablesfound),1,fp);
 
 	fwrite(&playerxpos,sizeof(playerxpos),1,fp);
 	fwrite(&playerypos,sizeof(playerypos),1,fp);
@@ -71,7 +71,7 @@ bool load(){
 			fread(&worldtileviewrange,sizeof(worldtileviewrange),1,fp);
 			fread(&usetextures,sizeof(usetextures),1,fp);
 			fread(&ghostmode,sizeof(ghostmode),1,fp);
-			fread(&collectablesfound,sizeof(collectablesfound),1,fp);
+			//fread(&collectablesfound,sizeof(collectablesfound),1,fp);
 
 			fread(&playerxpos,sizeof(playerxpos),1,fp);
 			fread(&playerypos,sizeof(playerypos),1,fp);

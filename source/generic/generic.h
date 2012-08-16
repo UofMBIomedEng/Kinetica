@@ -4,6 +4,7 @@
 #include <SDL_image.h>
 #include <SDL_mixer.h>
 #include <sdl_opengl.h>
+#include <time.h>
 
 #include <stdio.h>
 #include <math.h>
@@ -44,6 +45,7 @@ using std::ifstream;
 #include "loadobj.h"
 #include "lodepng.h"
 #include "loadbmp.h"
+#include "loadms3d.h"
 
 //specific to SDL surfaces
 
@@ -61,15 +63,21 @@ using std::ifstream;
 //specific to OpenGL
 #include "opengl/loadtexture.h"
 
+int lang=1;   // 1=English 2=French 3=Spanish 4=German
+
 //the dashboard and related functions
 #include "dashboard/dashsetup.h"
 #include "dashboard/dashloop.h"
 
+
 void genericsetup(){
 	//seed the random number generator
 	srand((int)time(NULL));
+
 	//setup the screen or window
 	initvideo();
+
 	//setup for the controller input
+
 	setupinput();
 }

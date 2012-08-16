@@ -131,10 +131,10 @@
     <ClInclude Include="source\generic\genericsettings.h" />
     <ClInclude Include="source\generic\initvideo.h" />
     <ClInclude Include="source\generic\input.h" />
+    <ClInclude Include="source\generic\loadms3d.h" />
     <ClInclude Include="source\generic\loadobj.h" />
     <ClInclude Include="source\generic\lodepng.h" />
     <ClInclude Include="source\generic\opengl\Build2DMipMapsGL.h" />
-    <ClInclude Include="source\generic\opengl\loadbmp.h" />
     <ClInclude Include="source\generic\opengl\loadtexture.h" />
     <ClInclude Include="source\generic\opengl\loadtga.h" />
     <ClInclude Include="source\generic\opengl\loadtoif.h" />
@@ -162,6 +162,7 @@
     <ClInclude Include="source\projectspecific\play.h" />
     <ClInclude Include="source\projectspecific\saveandload.h" />
     <ClInclude Include="source\projectspecific\tiles.h" />
+    <ClInclude Include="source\tilenames.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

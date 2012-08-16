@@ -1,12 +1,11 @@
-﻿Build started 7/19/2012 3:13:25 PM.
-     1>Project "C:\Users\Dan\Desktop\Kinetica\TheKineticianEngin.vcxproj" on node 2 (Build target(s)).
+﻿Build started 29/06/2012 3:22:54 PM.
+     1>Project "C:\Users\Dan\Documents\VR\Kinetica\TheKineticianEngin.vcxproj" on node 2 (Build target(s)).
      1>InitializeBuildStatus:
-         Creating "Release\Kinetica.unsuccessfulbuild" because "AlwaysCreate" was specified.
+         Touching "Release\Kinetica.unsuccessfulbuild".
        ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /IC:\Users\Dan\Desktop\Kinetica\source\include /Zi /nologo /W0 /WX- /O2 /Oi /Oy- /GL /D WIN /D NDEBUG /D _WINDOWS /D _CRT_SECURE_NO_WARNINGS /D _UNICODE /D UNICODE /Gm- /EHsc /MT /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Release\\" /Fd"Release\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt source\main.cpp
-         main.cpp
+         All outputs are up-to-date.
        Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Dan\Desktop\Kinetica\Release\Kinetica.exe" /INCREMENTAL:NO /NOLOGO /LIBPATH:C:\Users\Dan\Desktop\Kinetica\source\lib /FORCE SDL.lib SDLmain.lib SDL_image.lib SDL_mixer.lib opengl32.lib glu32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"Release\Kinetica.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:\Users\Dan\Desktop\Kinetica\Release\Kinetica.pdb" /SUBSYSTEM:WINDOWS /OPT:REF /OPT:ICF /LTCG /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Dan\Desktop\Kinetica\Release\Kinetica.lib" /MACHINE:X86 /SAFESEH Release\main.obj
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Dan\Documents\VR\Kinetica\Release\Kinetica.exe" /INCREMENTAL:NO /NOLOGO /LIBPATH:C:\Users\Dan\Documents\VR\Kinetica\source\lib /FORCE SDL.lib SDLmain.lib SDL_image.lib SDL_mixer.lib opengl32.lib glu32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"Release\Kinetica.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:\Users\Dan\Documents\VR\Kinetica\Release\Kinetica.pdb" /SUBSYSTEM:WINDOWS /OPT:REF /OPT:ICF /LTCG /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Dan\Documents\VR\Kinetica\Release\Kinetica.lib" /MACHINE:X86 /SAFESEH Release\main.obj
      1>LIBCMT.lib(crt0init.obj) : warning LNK4098: defaultlib 'msvcrt.lib' conflicts with use of other libs; use /NODEFAULTLIB:library
          Generating code
          Finished generating code
@@ -21,15 +20,10 @@
      1>msvcrt.lib(MSVCR110.dll) : warning LNK4006: _exit already defined in LIBCMT.lib(crt0dat.obj); second definition ignored
      1>msvcrt.lib(MSVCR110.dll) : warning LNK4006: _strrchr already defined in LIBCMT.lib(strrchr.obj); second definition ignored
      1>msvcrt.lib(MSVCR110.dll) : warning LNK4006: _atoi already defined in LIBCMT.lib(atox.obj); second definition ignored
-     1>C:\Users\Dan\Desktop\Kinetica\Release\Kinetica.exe : warning LNK4088: image being generated due to /FORCE option; image may not run
-         TheKineticianEngin.vcxproj -> C:\Users\Dan\Desktop\Kinetica\Release\Kinetica.exe
-       Manifest:
-         C:\Program Files (x86)\Windows Kits\8.0\bin\x86\mt.exe /nologo /verbose /outputresource:"C:\Users\Dan\Desktop\Kinetica\Release\Kinetica.exe;#1" /manifest Release\Kinetica.exe.intermediate.manifest
-       FinalizeBuildStatus:
-         Deleting file "Release\Kinetica.unsuccessfulbuild".
-         Touching "Release\Kinetica.lastbuildstate".
-     1>Done Building Project "C:\Users\Dan\Desktop\Kinetica\TheKineticianEngin.vcxproj" (Build target(s)).
+     1>C:\Users\Dan\Documents\VR\Kinetica\Release\Kinetica.exe : warning LNK4088: image being generated due to /FORCE option; image may not run
+     1>LINK : fatal error LNK1207: incompatible PDB format in 'C:\Users\Dan\Documents\VR\Kinetica\Release\Kinetica.pdb'; delete and rebuild
+     1>Done Building Project "C:\Users\Dan\Documents\VR\Kinetica\TheKineticianEngin.vcxproj" (Build target(s)) -- FAILED.
 
-Build succeeded.
+Build FAILED.
 
-Time Elapsed 00:00:06.52
+Time Elapsed 00:00:02.84

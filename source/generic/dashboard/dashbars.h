@@ -21,7 +21,18 @@ void setupdashbars(){
 	dashgentexturecoords(dash_bars_texturecoords[1],0,180,640,60);
 	
 	sprintf_s(dash_bars_credits[0],"%s","");
-	sprintf_s(dash_bars_credits[1],"%s","The Kinetica Game Engin");
+	switch(lang){
+	case 1:
+		sprintf_s(dash_bars_credits[1],"%s","The Kinetica Game Engine");
+		break;
+	case 2:
+		sprintf_s(dash_bars_credits[1],"%s","Le Moteur de Jeu Kinetica");
+		break;
+	case 3:
+		break;
+	case 4:
+		break;
+	}
 }
 
 void dashbars(){

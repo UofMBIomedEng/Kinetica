@@ -1,7 +1,14 @@
-struct tm *dash_time;
-const char* dash_wday[]={"Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"};
-const char* dash_month[]={"January","February","March","April","May","June","July","August","September","October","November","December"};
-const char* dash_day[]={"1st","2nd","3rd","4th","5th","6th","7th","8th","9th","10th","11th","12th","13th","14th","15th","16th","17th","18th","19th","20th","21st","22nd","23rd","24th","25th","26th","27th","28th","29th","30th","31st"};
+﻿struct tm *dash_time;
+const char* edash_wday[]={"Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"};
+
+const char* fdash_wday[]={"dimanche","lundi","mardi","mercredi","jeudi","vendredi","samdi"};
+const char* sdash_wday[]={"Domingo","Lunes","Martes","Miercoles","Jueves","Viernes","Sabado"};
+const char* gdash_wday[]={"Sonntag","Montag","Dienstag","Mittwoch","Donnerstag","Freitag","Samstag"};
+const char* edash_month[]={"January","February","March","April","May","June","July","August","September","October","November","December"};
+const char* fdash_month[]={"janvier","fevrier","mars","avril","mai","juin","juillet","aout","septembre","octobre","novembre","decembre"};
+const char* sdash_month[]={"Enero","Febrero","Marzo","Abril","Mayo","Junio","​​Julio","Septiembre","Octubre","Noviembre","Diciembre"};
+const char* gdash_month[]={"Januar","Februar","Marz","April","Mai","Juni","Juli","August","September","Oktober","November","Dezember"};
+const char* dash_day[]={"1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31"};
 char dash_composedtext_date[256];
 char dash_composedtext_time[256];
 
@@ -37,39 +44,114 @@ void dashtime(){
 	dash_time = localtime(&now);
 
 	//get the date in a char array text format
-	sprintf_s(dash_composedtext_date,"%s%s%s%s%s%s%d",
-			dash_wday[dash_time->tm_wday],
-			" ",
-			dash_month[dash_time->tm_mon],
-			" ",
-			dash_day[dash_time->tm_mday-1],
-			" ",
-			1900+dash_time->tm_year
-			);
-
+	switch(lang){
+	case 1:
+		sprintf_s(dash_composedtext_date,"%s%s%s%s%s%s%d",
+				edash_wday[dash_time->tm_wday],
+				" ",
+				dash_day[dash_time->tm_mday-1],
+				" ",
+				edash_month[dash_time->tm_mon],
+				" ",
+				1900+dash_time->tm_year
+				);
+		break;
+		
+	case 2:
+		sprintf_s(dash_composedtext_date,"%s%s%s%s%s%s%d",
+				fdash_wday[dash_time->tm_wday],
+				" ",
+				dash_day[dash_time->tm_mday-1],
+				" ",
+				fdash_month[dash_time->tm_mon],
+				" ",
+				1900+dash_time->tm_year
+				);
+		break;
+	case 3:
+		sprintf_s(dash_composedtext_date,"%s%s%s%s%s%s%d",
+				sdash_wday[dash_time->tm_wday],
+				" ",
+				dash_day[dash_time->tm_mday-1],
+				" ",
+				sdash_month[dash_time->tm_mon],
+				" ",
+				1900+dash_time->tm_year
+				);
+		break;
+	case 4:
+		sprintf_s(dash_composedtext_date,"%s%s%s%s%s%s%d",
+				gdash_wday[dash_time->tm_wday],
+				" ",
+				dash_day[dash_time->tm_mday-1],
+				" ",
+				gdash_month[dash_time->tm_mon],
+				" ",
+				1900+dash_time->tm_year
+				);
+		break;
+		
+	}
 	//get the time in a char array text format
-	strcpy_s(dash_composedtext_time,"");
-	if(dash_time->tm_hour>12){
-		sprintf_s(dash_composedtext_time,"%s%d",dash_composedtext_time,dash_time->tm_hour-12);
-	}else{
-		if(dash_time->tm_hour==0){
-			sprintf_s(dash_composedtext_time,"%s%d",dash_composedtext_time,12);
-		}else{
-			sprintf_s(dash_composedtext_time,"%s%d",dash_composedtext_time,dash_time->tm_hour);
-		}
-	}
-	strcat_s(dash_composedtext_time,":");
-	if(dash_time->tm_min<10)
-		strcat_s(dash_composedtext_time,"0");
-	sprintf_s(dash_composedtext_time,"%s%d",dash_composedtext_time,dash_time->tm_min);
-	strcat_s(dash_composedtext_time,":");
-	if(dash_time->tm_sec<10)
-		strcat_s(dash_composedtext_time,"0");
-	sprintf_s(dash_composedtext_time,"%s%d",dash_composedtext_time,dash_time->tm_sec);
-	if(dash_time->tm_hour>11){
-		strcat_s(dash_composedtext_time," PM");
-	}else{
-		strcat_s(dash_composedtext_time," AM");
-	}
 
+	strcpy_s(dash_composedtext_time,"");
+	switch(lang){
+	case 1:
+		if(dash_time->tm_hour>12){
+			sprintf_s(dash_composedtext_time,"%s%d",dash_composedtext_time,dash_time->tm_hour-12);
+		}else{
+			if(dash_time->tm_hour==0){
+				sprintf_s(dash_composedtext_time,"%s%d",dash_composedtext_time,12);
+			}else{
+				sprintf_s(dash_composedtext_time,"%s%d",dash_composedtext_time,dash_time->tm_hour);
+			}
+		}
+		strcat_s(dash_composedtext_time,":");
+		if(dash_time->tm_min<10)
+			strcat_s(dash_composedtext_time,"0");
+		sprintf_s(dash_composedtext_time,"%s%d",dash_composedtext_time,dash_time->tm_min);
+		strcat_s(dash_composedtext_time,":");
+		if(dash_time->tm_sec<10)
+			strcat_s(dash_composedtext_time,"0");
+		sprintf_s(dash_composedtext_time,"%s%d",dash_composedtext_time,dash_time->tm_sec);
+		if(dash_time->tm_hour>11){
+			strcat_s(dash_composedtext_time," PM");
+		}else{
+			strcat_s(dash_composedtext_time," AM");
+		}
+		break;
+	case 2:
+		sprintf_s(dash_composedtext_time,"%s%d",dash_composedtext_time,dash_time->tm_hour);
+		strcat_s(dash_composedtext_time,":");
+		if(dash_time->tm_min<10)
+			strcat_s(dash_composedtext_time,"0");
+		sprintf_s(dash_composedtext_time,"%s%d",dash_composedtext_time,dash_time->tm_min);
+		strcat_s(dash_composedtext_time,":");
+		if(dash_time->tm_sec<10)
+			strcat_s(dash_composedtext_time,"0");
+		sprintf_s(dash_composedtext_time,"%s%d",dash_composedtext_time,dash_time->tm_sec);
+		break;
+	case 3:
+		sprintf_s(dash_composedtext_time,"%s%d",dash_composedtext_time,dash_time->tm_hour);
+		strcat_s(dash_composedtext_time,":");
+		if(dash_time->tm_min<10)
+			strcat_s(dash_composedtext_time,"0");
+		sprintf_s(dash_composedtext_time,"%s%d",dash_composedtext_time,dash_time->tm_min);
+		strcat_s(dash_composedtext_time,":");
+		if(dash_time->tm_sec<10)
+			strcat_s(dash_composedtext_time,"0");
+		sprintf_s(dash_composedtext_time,"%s%d",dash_composedtext_time,dash_time->tm_sec);
+		break;
+	case 4:
+		sprintf_s(dash_composedtext_time,"%s%d",dash_composedtext_time,dash_time->tm_hour);
+		strcat_s(dash_composedtext_time,":");
+		if(dash_time->tm_min<10)
+			strcat_s(dash_composedtext_time,"0");
+		sprintf_s(dash_composedtext_time,"%s%d",dash_composedtext_time,dash_time->tm_min);
+		strcat_s(dash_composedtext_time,":");
+		if(dash_time->tm_sec<10)
+			strcat_s(dash_composedtext_time,"0");
+		sprintf_s(dash_composedtext_time,"%s%d",dash_composedtext_time,dash_time->tm_sec);
+		break;
+	}
 }

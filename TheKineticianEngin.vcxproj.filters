@@ -92,9 +92,6 @@
     <ClInclude Include="source\generic\opengl\Build2DMipMapsGL.h">
       <Filter>source\generic\opengl</Filter>
     </ClInclude>
-    <ClInclude Include="source\generic\opengl\loadbmp.h">
-      <Filter>source\generic\opengl</Filter>
-    </ClInclude>
     <ClInclude Include="source\generic\opengl\loadtexture.h">
       <Filter>source\generic\opengl</Filter>
     </ClInclude>
@@ -171,6 +168,12 @@
       <Filter>source\generic</Filter>
     </ClInclude>
     <ClInclude Include="source\generic\spherebumpmesh.h">
+      <Filter>source\generic</Filter>
+    </ClInclude>
+    <ClInclude Include="source\tilenames.h">
+      <Filter>source</Filter>
+    </ClInclude>
+    <ClInclude Include="source\generic\loadms3d.h">
       <Filter>source\generic</Filter>
     </ClInclude>
   </ItemGroup>

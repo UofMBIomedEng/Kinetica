@@ -13,11 +13,4 @@ void dashloop(){
 		dashmenu();
 		dashcursors();
 	}
-	
-	if(1){
-		char temptext[256];
-		sprintf_s(temptext,"%s%2.0f","FPS: ",dash_framerate);
-		dashbutton(25,75,200,10,0,0,(char*)temptext);
-	}
-
 }

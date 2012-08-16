@@ -1,4 +1,4 @@
-const int worldtilecount=76;
+const int worldtilecount=max_number_tile;
 const float worldtilesize=10;
 
 float *worldtilevertexarray[worldtilecount][4];
@@ -13,6 +13,14 @@ void loadtiles(){
 
 	//generic reusable char array for filenames
 	char filename[256];
+
+	// preparing
+	dashprepdraw();
+	dashdrawbutton(10,10,20,20,1);
+
+
+	//init progress bar
+	init_progressbar();
 
 	//setup each tile
 	for(int a=0; a<worldtilecount; a++){
@@ -48,19 +56,6 @@ void loadtiles(){
 			}
 		}
 
-		//rig the texture coordinates
-		/*
-		
-			for(int b=0; b<worldtilevertexcount[a]/3; b++){
-				worldtiletexturearray[a][b*3*2+0]=test&0x01;
-				worldtiletexturearray[a][b*3*2+1]=test&0x02;
-				worldtiletexturearray[a][b*3*2+2]=test&0x04;
-				worldtiletexturearray[a][b*3*2+3]=test&0x08;
-				worldtiletexturearray[a][b*3*2+4]=test&0x10;
-				worldtiletexturearray[a][b*3*2+5]=test&0x20;
-			}
-			*/
-
 		//rig the normals
 		for(int b=0; b<4; b++)
 			for(int c=0; c<worldtilevertexcount[a]/3; c++){
@@ -80,22 +75,23 @@ void loadtiles(){
 				worldtilenormalarray[a][b][c*9+8]=-vNormal.z;
 			}
 
-	
-
 		//create the collision meshes
 		for(int b=0; b<4; b++)
 			worldtilecollisionmesh[a][b] = new collisionmesh(worldtilevertexcount[a],worldtilevertexarray[a][b]);
-		
+
+
+		//load the textures
+		sprintf_s(filename,"%s%i%s","Media/worldtiles/",a,".bmp");
+		worldtiletexture[a]=loadbmp((char*)filename,mipmapping);
+
+		//update progress bar
+
+		//drawprogressbar(10.f,280.f,200,310.f,3.f,a/worldtilecount*0.01f);
 	}
 
-	//load the textures
 	
-	for(int a=0; a<worldtilecount; a++){
-		sprintf_s(filename,"%s%i%s","Media/worldtiles/",a,".bmp");
-	//	worldtiletexture[a]=loadtexture((char*)filename,mipmapping);
-	//	worldtiletexture[a]=loadtexture((char*)filename,1);
-		worldtiletexture[a]=loadbmp((char*)filename,mipmapping);
-	}
+	
+
 	
 
 }

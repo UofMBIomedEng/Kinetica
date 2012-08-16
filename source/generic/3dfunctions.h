@@ -57,6 +57,33 @@ void draw2dquad(float posx,float posy,float sizex,float sizey,float *texturecoor
 	glDrawArrays(GL_QUADS,0,4);
 }
 
+void draw2dquad2(float posx,float posy,float sizex,float sizey,float *texturecoords,bool centerandrotate=0,float angle=0){
+	if(centerandrotate==0){
+		float verts[]={posx,posy+sizey,posx+sizex,posy+sizey,posx+sizex,posy,posx,posy,};
+		glVertexPointer(2,GL_FLOAT,0,verts);
+		glTexCoordPointer(2,GL_FLOAT,0,texturecoords);
+		glDrawArrays(GL_QUADS,0,4);
+	}else if(angle==0){
+		sizex*=0.5f;
+		sizey*=0.5f;
+		float verts[]={posx-sizex,posy+sizey,posx+sizex,posy+sizey,posx+sizex,posy-sizey,posx-sizex,posy-sizey,};
+		glVertexPointer(2,GL_FLOAT,0,verts);
+		glTexCoordPointer(2,GL_FLOAT,0,texturecoords);
+		glDrawArrays(GL_QUADS,0,4);
+	}else{
+		sizex*=0.5f;
+		sizey*=0.5f;
+		float verts[]={0-sizex,0+sizey,0+sizex,0+sizey,0+sizex,0-sizey,0-sizex,0-sizey,};
+		glPushMatrix();
+		glTranslatef(posx,posy,0);
+		glRotatef(angle*degreesinradian,0,0,1);
+		glVertexPointer(2,GL_FLOAT,0,verts);
+		glTexCoordPointer(2,GL_FLOAT,0,texturecoords);
+		glDrawArrays(GL_QUADS,0,4);
+		glPopMatrix();
+	}
+}
+
 void draw3dquadmesh(int vertexcount,float *verts,float *texturecoords,float *colors = NULL,float *normals = NULL){
 	glVertexPointer(3,GL_FLOAT,0,verts);
 	glTexCoordPointer(2,GL_FLOAT,0,texturecoords);

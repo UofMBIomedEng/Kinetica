@@ -32,9 +32,12 @@ void initopengl(){
 
 	if(fullscreen==1)
 		screen = SDL_SetVideoMode((int)screenw,(int)screenh,screenbpp,SDL_OPENGL|SDL_FULLSCREEN);
+		
 	if(fullscreen==0)
 		screen = SDL_SetVideoMode((int)screenw,(int)screenh,screenbpp,SDL_OPENGL);
 	if (!screen) { SDL_Quit(); exit(3); }
+	
+	SDL_GL_SwapBuffers();
 
     //Size OpenGL to Video Surface
     glViewport(0, 0, (int)screenw, (int)screenh);
@@ -62,6 +65,7 @@ void initopengl(){
 	glFrontFace(GL_CCW);
 	glBlendFunc(GL_SRC_ALPHA,GL_ONE_MINUS_SRC_ALPHA);
 	glAlphaFunc(GL_GREATER,0.0f);
+
 }
 
 void initvideo(){
