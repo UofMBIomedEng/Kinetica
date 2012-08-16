@@ -1,1 +1,1 @@
-Das ist die Sourcecode von dem Kinetica Projekt, aus der Universität der Manitoba.
+Das ist die Sourcecode von dem Kinetica Projekt, aus der Universitat der Manitoba.
