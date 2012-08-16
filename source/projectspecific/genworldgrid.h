@@ -516,7 +516,7 @@ void genworldgrid_building(){
 	break;
 	case 3:
 
-	//ramps at 180 degrees
+	//stairs at 180 degrees
 		worldgrid[house_low_x+((house_high_x-house_low_x)/2)+2][streetlevel+1][house_low_z+((house_high_z-house_low_z)/2)][0]=ramp_tile;
 	worldgrid[house_low_x+((house_high_x-house_low_x)/2)+2][streetlevel+2][house_low_z+((house_high_z-house_low_z)/2)][0]=0;
 	worldgrid[house_low_x+((house_high_x-house_low_x)/2)+2][streetlevel+1][house_low_z+((house_high_z-house_low_z)/2)+1][0]=0;
@@ -539,7 +539,7 @@ void genworldgrid_building(){
 	break;
 	
 	case 4:
-	//ramps at 90 degrees (floor not fixed for this configuration)
+	//stairs at 90 degrees (floor not fixed for this configuration)
 	//holes in floor
 	//second floor floor
 	worldgrid[25][streetlevel+1][24][0]=empty_tile;//top of stairs...

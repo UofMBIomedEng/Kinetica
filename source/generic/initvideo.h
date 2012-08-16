@@ -1,7 +1,8 @@
 SDL_Surface *screen;
 
-float background_color[4]={0, 0.16, 0.35, 1};      // bakgournd sky color
-float fog_color[4]={0, 0.16, 0.35, 0.1};			  // fog color	
+
+float background_color[4]={0.5, 0.66, 0.85, 1};      // bakgournd sky color
+float fog_color[4]={0.4, 0.56, 0.75, 0.1};			  // fog color	
 
 void initopengl(){
     
@@ -19,6 +20,10 @@ void initopengl(){
 		glEnable(GL_LINE_SMOOTH);
 		glEnable(GL_POLYGON_SMOOTH);
 	}
+
+//	skybox = new SKYBOX();
+	
+
 
 	//Create Video Surface
 	//there seems to be a problem with opengl plus a screen width or height of zero

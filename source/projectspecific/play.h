@@ -11,6 +11,9 @@ void play(float gamespeed){
 			if(worldtileviewrange>60)worldtileviewrange=60;
 		}
 
+		if(keystate[SDLK_v]==2){
+			PositionTest();
+		}
 
 		//decrease view range
 		if(keystate[SDLK_b]==2){
@@ -34,8 +37,6 @@ void play(float gamespeed){
 		if(keystate[SDLK_4]==2){
 			if(ghostmode==1){ghostmode=0;}else{ghostmode=1;}
 		}
-		
-	/*
 		//previous tile
 		if(keystate[SDLK_5]==2){
 			worldgrid[playerxgridpos][playerygridpos][playerzgridpos][0]-=1;
@@ -54,8 +55,6 @@ void play(float gamespeed){
 			if(worldgrid[playerxgridpos][playerygridpos][playerzgridpos][1]>3)
 				worldgrid[playerxgridpos][playerygridpos][playerzgridpos][1]-=4;
 		}
-	
-	
 		//save everything
 		if(keystate[SDLK_8]==2){
 			saveworldgrid();
@@ -66,7 +65,8 @@ void play(float gamespeed){
 			loadworldgrid();
 			load();
 		}
-	*/
+
+
 		//Mouse on off
 		if(keystate[SDLK_m]==2){
 			if(usemouse==1){usemouse=0;}else{usemouse=1;/*cursorx[0]=(int)screenh/2;cursory[0]=(int)screenw/2;*/}
@@ -95,20 +95,7 @@ void play(float gamespeed){
 		//Quit the game
 		if(keystate[SDLK_q]==2)shutdownprogram=1;
 
-		//Show info
-		if(keystate[SDLK_i]==2){
-			if(showinfo==1){showinfo=0;}else{showinfo=1;}
 
-		}
-
-		//start the intro	
-		if(keystate[SDLK_s]==2)
-			if(start_motion==0){start_motion=1;tmpcamyang=camyang;start_time=elapsedtime;}
-
-		
-	
-
-/*
 	//update entities
 	for(int x=highint(0,playerxgridpos-worldtileviewrange); x<lowint(worldgridsizex,playerxgridpos+worldtileviewrange+1); x++)
 	for(int y=highint(0,playerygridpos-worldtileviewrange); y<lowint(worldgridsizey,playerygridpos+worldtileviewrange+1); y++)
@@ -171,7 +158,6 @@ void play(float gamespeed){
 			removeentityfromlist(x,y,z,e);
 		}
 	}
-*/
 
 	//turn the camera
 
@@ -188,11 +174,9 @@ void play(float gamespeed){
 		mouse_camyang = ((float)cursorx[0]-(screenw/2))*(180*radiansindegree/screenw);
 		mouse_camxang = ((screenh/2)-(float)cursory[0])*(180*radiansindegree/screenh);
 		//}
-	
 		//dont look too far up or down
 		if(camxang<0-90*radiansindegree)camxang=0-90*radiansindegree;//looking down
 		if(camxang>0+90*radiansindegree)camxang=0+90*radiansindegree;//looking up
-	
 		//move based on input
 		float movespeed=0;
 		float moveangle=0;
@@ -204,20 +188,20 @@ void play(float gamespeed){
 		//if(keystate[SDLK_d]|keystate[SDLK_RIGHT])right=1;
 
 		if(keystate[SDLK_LEFT])
-			nav_camyang-=0.01f*gamespeed;
+		nav_camyang-=0.01f*gamespeed;
 
 		if(keystate[SDLK_RIGHT])
-			nav_camyang+=0.01f*gamespeed;
+		nav_camyang+=0.01f*gamespeed;
 
 		moveangle=atan2((float)right-(float)left,(float)up-(float)down);
 		movespeed=dist2d((float)right-(float)left,(float)up-(float)down,0,0);
 		if(movespeed>1)movespeed=1;
 		if(movespeed>0.1){
-			if(ghostmode)
-				movein3dspace(playerxposmov,playeryposmov,playerzposmov,camyang,camxang,movespeed*0.2f*gamespeed);
-			else{
-				playerxposmov+=movespeed*cos(nav_camyang+moveangle)*0.04f*gamespeed;
-				playerzposmov+=movespeed*sin(nav_camyang+moveangle)*0.04f*gamespeed;
+		if(ghostmode)
+		movein3dspace(playerxposmov,playeryposmov,playerzposmov,camyang,camxang,movespeed*0.2f*gamespeed);
+		else{
+			playerxposmov+=movespeed*cos(nav_camyang+moveangle)*0.04f*gamespeed;
+			playerzposmov+=movespeed*sin(nav_camyang+moveangle)*0.04f*gamespeed;
 			}
 		}
 
@@ -229,7 +213,6 @@ void play(float gamespeed){
 	else{
 
 		//Arrow key control
-		
 		float movespeed=0;
 		float moveangle=0;
 		bool up=0,down=0;
@@ -240,44 +223,48 @@ void play(float gamespeed){
 		if(movespeed>1)movespeed=1;
 		if(movespeed>0.1){
 			if(ghostmode)
-				movein3dspace(playerxposmov,playeryposmov,playerzposmov,camyang,camxang,movespeed*0.2f*gamespeed);
+			movein3dspace(playerxposmov,playeryposmov,playerzposmov,camyang,camxang,movespeed*0.2f*gamespeed);
 			else{
 				playerxposmov+=movespeed*cos(nav_camyang+moveangle)*0.04f*gamespeed;
 				playerzposmov+=movespeed*sin(nav_camyang+moveangle)*0.04f*gamespeed;
 			}
 		}
-	
 		if(keystate[SDLK_LEFT])
-			nav_camyang-=0.01f*gamespeed;
+		nav_camyang-=0.01f*gamespeed;
 
 		if(keystate[SDLK_RIGHT])
-			nav_camyang+=0.01f*gamespeed;
-	
+		nav_camyang+=0.01f*gamespeed;
 		camxang=nav_camxang;
 		camyang=nav_camyang;
 		//camzang=nav_camzang;
 
 	}
 
-	if(usejoystick){											//Joystick control	
+	if(usejoystick){	//Joystick control	
 
-		if(joyGetPos(0,&joystick))	usejoystick=0;				//obtain joystick value and check the presence
+		if(joyGetPos(0,&joystick))	usejoystick=0;	//obtain joystick value and check the presence
 		else{
 			if(((float)joystick.wXpos-32768>1500)||((float)joystick.wXpos-32768<-1500)) nav_camyang+=((float)joystick.wXpos-32768)*(0.01/32768)*gamespeed;	
 			if((32768-(float)joystick.wYpos>1500)||(32768-(float)joystick.wYpos<-1500)){
-					playerxposmov+=(32768-(float)joystick.wYpos)*(0.03/32768)*gamespeed*cos(nav_camxang)*cos(nav_camyang);
-					playeryposmov-=(32768-(float)joystick.wYpos)*(0.03/32768)*gamespeed*sin(nav_camxang);
-					playerzposmov+=(32768-(float)joystick.wYpos)*(0.03/32768)*gamespeed*cos(nav_camxang)*sin(nav_camyang);
-					
-				
-				
+				playerxposmov+=(32768-(float)joystick.wYpos)*(0.03/32768)*gamespeed*cos(nav_camxang)*cos(nav_camyang);
+				playeryposmov-=(32768-(float)joystick.wYpos)*(0.03/32768)*gamespeed*sin(nav_camxang);
+				playerzposmov+=(32768-(float)joystick.wYpos)*(0.03/32768)*gamespeed*cos(nav_camxang)*sin(nav_camyang);
 			}
-		//	playeryposmov+=(32768-(float)joystick.wYpos)*(JoyTransVel/32768)*sin(-camxang);
-		
-		//	camxang=((float)joystick.wZpos-32768)*(45*radiansindegree/32768);	
+			//	playeryposmov+=(32768-(float)joystick.wYpos)*(JoyTransVel/32768)*sin(-camxang);
+			//	camxang=((float)joystick.wZpos-32768)*(45*radiansindegree/32768);	
 			camxang=0*radiansindegree;
 		}
 	}
+
+	//head up on the ramp
+	//if(worldgrid[(int)(playerxpos/10)][(int)(playerypos/10)][(int)(playerzpos/10)][0]==ramp_tile)
+	//	camxang=10*radiansindegree;
+	//else
+	//	camxang=0;
+
+//	camxang=playeryposmov*100*radiansindegree;
+
+	//end of head up on the ramp
 
 	//else
 		//camxang=0;
@@ -329,8 +316,6 @@ void play(float gamespeed){
 				x*worldtilesize,y*worldtilesize,z*worldtilesize,0,
 				worldtilecollisionmesh[(int)worldgrid[x][y][z][0]][(int)worldgrid[x][y][z][1]],
 				1,0);
-			
-			/*
 			for(int a=0; a<entitycount[x][y][z]; a++){
 				if(entitytypesolid[entitylist[x][y][z][a]->type]==1){
 					spherebumpmesh(playerxpos,playerypos,playerzpos,
@@ -342,7 +327,6 @@ void play(float gamespeed){
 					entitycollisionmesh[entitylist[x][y][z][a]->type],1,0);
 				}
 			}
-			*/
 		}
 		for(int x=lowx; x<highx; x++)
 			for(int y=lowy; y<highy; y++)
@@ -354,7 +338,6 @@ void play(float gamespeed){
 							x*worldtilesize,y*worldtilesize,z*worldtilesize,0,
 							worldtilecollisionmesh[(int)worldgrid[x][y][z][0]][(int)worldgrid[x][y][z][1]],
 							0,1);
-						/*
 						for(int a=0; a<entitycount[x][y][z]; a++){
 							if(entitytypesolid[entitylist[x][y][z][a]->type]==1){
 								spherebumpmesh(playerxpos,playerypos,playerzpos,
@@ -366,7 +349,6 @@ void play(float gamespeed){
 								entitycollisionmesh[entitylist[x][y][z][a]->type],0,1);
 							}
 						}
-						*/
 					}
 		playerypos-=playerheight;
 		if(playerypos>(float)(oldy+playeryposmov*gamespeed)+0.001){
@@ -379,6 +361,25 @@ void play(float gamespeed){
 	playerxposmov=(playerxpos-oldx)/gamespeed;
 	playeryposmov=(playerypos-oldy)/gamespeed;
 	playerzposmov=(playerzpos-oldz)/gamespeed;
+
+	//Audio Effects ***************************
+	ALfloat source0Vel[]={ 5*playerxposmov, 5*playeryposmov, 5*playerzposmov};
+	alSourcefv(source[0],AL_VELOCITY,source0Vel);
+	alListener3f(AL_POSITION, 245-playerxpos,26-playerypos,245-playerzpos);
+	float directionvect[6];
+	directionvect[0] = (float) sin((90*radiansindegree)-camyang);
+	directionvect[1] = 0;
+	directionvect[2] = (float) cos((90*radiansindegree)-camyang);
+	directionvect[3] = 0;
+	directionvect[4] = 1;
+	directionvect[5] = 0;
+	alListenerfv(AL_ORIENTATION, directionvect);
+//	gluLookAt(245-playerxpos, 26-playerypos, 245-playerzpos,(245-playerxpos + sin(camyang)), 26-playerypos,(245-playerzpos - cos(camyang)),0.0, 1.0, 0.0);
+//	ALfloat source0Pos[]={ (245-playerxpos)/10+(cos(camyang)), 26-playerypos, (245-playerzpos)/10+(sin(camyang))};	// Behind and to the left of the listener
+//	alSourcefv(source[0],AL_POSITION,source0Pos);
+
+	//end of Audio effect *************************
+
 	//lose momentum
 	
 	if(ghostmode){
@@ -397,7 +398,7 @@ void play(float gamespeed){
 		}
 	}
 	
-	//update the player's grid position
+	//update the players grid position
 	playerxgridpos=(int)((playerxpos+worldtilesize*0.5)/worldtilesize);
 	playerygridpos=(int)((playerypos+worldtilesize*0.5)/worldtilesize);
 	playerzgridpos=(int)((playerzpos+worldtilesize*0.5)/worldtilesize);
@@ -406,18 +407,5 @@ void play(float gamespeed){
 	camxpos=playerxpos;
 	camypos=playerypos+playerheadheight;
 	camzpos=playerzpos;
-
-	// intro
-		const int turn_duration = 40;
-		if(start_motion)
-		{
-			motion_time=(elapsedtime-start_time)/1000;
-
-			camxpos=(worldtilesize*worldgridsizex/2)-((worldtilesize*worldgridsizex/3))*cos(motion_time*PI/(turn_duration/2));
-			camzpos=(worldtilesize*worldgridsizex/2)+((worldtilesize*worldgridsizez/3))*sin(motion_time*PI/(turn_duration/2));
-			camypos=streetlevel*worldtilesize;
-			camyang=(90*radiansindegree)-(motion_time*PI/(turn_duration/2)+(radiansindegree*450));
-			if(motion_time>turn_duration){ start_motion = 0; camyang=tmpcamyang; }
-		}
-
+	
 }

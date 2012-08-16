@@ -76,5 +76,5 @@ void genentities(){
 			entitycount[x][y][z]+=1;
 		}
 	}
-
+	
 }

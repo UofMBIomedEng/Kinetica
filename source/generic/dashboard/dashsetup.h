@@ -1,5 +1,3 @@
-bool showinfo=1;
-
 SDL_Surface *dash_sprite = NULL;
 
 GLuint dash_texture = NULL;

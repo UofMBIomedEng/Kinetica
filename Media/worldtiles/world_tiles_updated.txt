@@ -20,5 +20,3 @@ World Tiles - Updated
 78 - Kitten
 79 - Puppy
 80 - Cow
-81 - ramp1
-82 - ramp2 (2nd floor 90 degree ramps)

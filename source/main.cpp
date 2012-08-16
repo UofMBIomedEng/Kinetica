@@ -5,7 +5,6 @@ bool shutdownprogram = 0;
 #include "projectsetup.h"
 #include "projectloop.h"
 
-
 int main(int argc,char **argv){
 
 	for(int i=1;i<argc;i++){
@@ -17,15 +16,12 @@ int main(int argc,char **argv){
 	loadsettings();											//load the project specific settings
 
 	genericsetup();											//generic setup
-	
-	projectsetup();											//setup for the project
-	
+
 	dashsetup();											//setup the dashboard
 
-	starttime=(double)SDL_GetTicks();						//get game start time
-	
+	projectsetup();											//setup for the project
+
 	//game loop
-	
 	while(!shutdownprogram){
 
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);	//clear the screen
@@ -40,13 +36,14 @@ int main(int argc,char **argv){
 
 		//show the frame
 		SDL_GL_SwapBuffers();
-		
+
 		//clear out left over events and shut down when appropriate
 		SDL_Event event;
 		while(SDL_PeepEvents(&event,1,SDL_GETEVENT,SDL_ALLEVENTS)>0)
 			if(event.type==SDL_QUIT)shutdownprogram=1;
     }
     // Clean up
+	SKYBOX_Finalize();
     SDL_Quit();
     return 0;
 }

@@ -1,5 +1,5 @@
-float dashonpercent;
-bool dashon;
+float dashonpercent=0;
+bool dashon=0;
 
 SDL_Surface *screenshot_sprite = NULL;
 SDL_Surface *dash_background_sprite = NULL;

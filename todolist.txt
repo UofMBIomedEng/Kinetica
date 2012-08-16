@@ -21,14 +21,14 @@
 
 2.6 Allocentric mode has been added to the game (/ALLOCENTRIC) 
 
-2.7 The suffiex ALLO and EGO will be added to the saving directories automatically 
+2.7 The suffiex ALLO and EGO will be added the saving directories automatically 
     Translation and rotation velocity of the joystick can be set using external switches (/JOYTRANSVEL 1.0 /JOYANGVEL 1.0)	
 
-2.8 Besides English, French, Spanish and German languages have been added to the game (LANGUAGE 1)
+2.8 Beside English, French, Spanish and German languages have been added to the game (LANGUAGE 1)
 
 2.9 Kidmode added to the game which swaps the shapes to animals
-    #Jumping has been disabled except for testmode
-    #Setting the tilt using the Joystick has been disabled
+    Jumping has been disabled except for testmode
+    Setting the tilt using the Joystick has been disabled
 
 3.0 Background Animal sound added to the KIDMODE (activated by the /ANIMSOUND switch)
 
@@ -41,25 +41,23 @@
 IN KINETICA -
 NEED TO DO THE FOLLOWING:
 
-#Add translations for instructions and hud
+Add translations for instructions and hud
 use DirectX for playing media
 	switch for different media files for different languages
 use DirectX to read in joystick movments
-Xcreate angular momentum
+create angular momentum
 create switch for momentum
 	momentum on for joystick, off for wheelchair
 		need way to recognize wheelchair vs. joystick
 write to logfile (play?)
-#disable object creation
+disable object creation
 add player
 	texture wrap player?
 	add player in wheelchair
-#texture wrap ramps
-	#fix ramp tops
-	#remove isolators for ramp mode
+texture wrap ramps
+	fix ramp tops
 #fix top of stairs	
 	#wrap
-#add new object for stairs and ramps (stairs2 and ramp2 = 82,83) to make the signs logical in stairs at 90deg mode.
-#fix mouse movement mouse mode
+fix mouse movement mouse mode
 #disable up-down movement joystick mode
 #disable jumping option keyboard mode

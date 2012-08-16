@@ -4,22 +4,18 @@ bool ghostmode=0;
 bool showminimap=0;
 
 //danyal added
-
-int stairtype=3;   //1=stairs at 180degrees, 2=stairs at 90 degrees, 3=ramp at 180degrees, 4=ramp at 90 degrees
-bool allocentric=1;
-bool kidmode=1;
-bool animal_background_sound=1;
+int lang=1;   // 1=English 2=Spanish 3=French 4=German
+int stairtype=4;   //1=stairs at 180degrees, 2=stairs at 90 degrees, 3=ramp at 180degrees, 4=ramp at 90 degrees
+bool allocentric=0;
+bool kidmode=0;
+bool animal_background_sound=0;
 bool wheelchairmode=0;
-float target_x=0,target_y=0,target_z=0;
-const int target_offset=3;
-bool sound=1;
-int sound_delay=10;
 //...
 
 bool usemouse=0;
 bool showplayer=0;
 bool autoexit=0;
-bool start_motion=0;
+bool showinfo=1;
 bool usejoystick=0;
 
 JOYINFO joystick;
@@ -40,7 +36,7 @@ int playerygridpos=0;
 int playerzgridpos=0;
 
 float camxpos=0,camypos=0,camzpos=0;
-float camxang=0,camyang=0,camzang=0,tmpcamyang=0;
+float camxang=0,camyang=0,camzang=0;
 float nav_camxang=0,nav_camyang=0,nav_camzang=0;
 float mouse_camxang=0,mouse_camyang=0,mouse_camzang=0;
 
@@ -112,7 +108,7 @@ void projectsetup(){
 	loadtiles();
 
 	//load entities
-	//loadentities();
+	loadentities();
 
 	//clean up
 	genworldgrid_cleanup();
@@ -152,7 +148,7 @@ void projectsetup(){
 		worldtileviewrange=45;
 		usetextures=1;
 		ghostmode=0;
-		//collectablesfound=0;
+		collectablesfound=0;
 
 		//setup the player and camera start position
 		int x=worldgridsizex/6;
@@ -177,7 +173,7 @@ void projectsetup(){
 		camyang=0;
 		camzang=0;
 		//place entities
-		//genentities();
+		genentities();
 		//save it
 		//save();
 	//}

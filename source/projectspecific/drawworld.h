@@ -20,6 +20,16 @@ void drawworld(){
 	glEnableClientState(GL_VERTEX_ARRAY);
 	glEnableClientState(GL_TEXTURE_COORD_ARRAY);
 
+	/*
+	glEnable(GL_MULTISAMPLE);
+	glHint(GL_LINE_SMOOTH_HINT,GL_FASTEST);
+	glHint(GL_POLYGON_SMOOTH_HINT,GL_FASTEST);
+	glEnable(GL_LINE_SMOOTH);
+	glEnable(GL_POLYGON_SMOOTH);
+	*/
+
+	SKYBOX_Render(camyang*degreesinradian,-camxang*degreesinradian);
+	
 	//turn on lighting
 	glEnable(GL_LIGHTING);
 	glEnable(GL_LIGHT0);
@@ -31,8 +41,28 @@ void drawworld(){
 	glLightfv(GL_LIGHT0,GL_AMBIENT,light_ambient0);
 	glLightfv(GL_LIGHT0,GL_DIFFUSE,light_diffuse0);
 	glLightfv(GL_LIGHT0,GL_SPECULAR,light_specular0);
-	glLightf(GL_LIGHT0,GL_LINEAR_ATTENUATION,0.0005f);
+//	glLightf(GL_LIGHT0,GL_QUADRATIC_ATTENUATION,0.005f);
 	glEnableClientState(GL_NORMAL_ARRAY);
+	
+	
+/*	const GLfloat shiny_factor=100;
+	glMaterialfv(GL_FRONT, GL_SHININESS, &shiny_factor); // Shininess between 0 and 128
+*/
+	/*
+	//sun
+	glEnable(GL_LIGHTING);
+	glEnable(GL_LIGHT1);
+	GLfloat light_position1[] = {120,30,255,1.0};
+	GLfloat light_ambient1[] = {1.0,1.0,1.0,1.0};
+	GLfloat light_diffuse1[] = {1.0,1.0,1.0,1.0};
+	GLfloat light_specular1[] = {1.0,1.0,1.0,1.0};
+	glLightfv(GL_LIGHT1,GL_POSITION,light_position0);
+	glLightfv(GL_LIGHT1,GL_AMBIENT,light_ambient0);
+	glLightfv(GL_LIGHT1,GL_DIFFUSE,light_diffuse0);
+	glLightfv(GL_LIGHT1,GL_SPECULAR,light_specular0);
+	glLightf(GL_LIGHT1,GL_LINEAR_ATTENUATION,0.05f);
+	glEnableClientState(GL_NORMAL_ARRAY);
+	*/
 
 	//turn on fog
 	GLfloat fogColor[4]= {fog_color[0],fog_color[1],fog_color[2],fog_color[3]};             //fog color
@@ -43,6 +73,8 @@ void drawworld(){
 	glFogf(GL_FOG_START,0.1f);
 	glFogf(GL_FOG_END,worldtilesize*worldtileviewrange);
 	glEnable(GL_FOG);
+
+	//SKYBOX_Render(camyang*degreesinradian,camxang*degreesinradian);
 
 	//draw the world tiles
 	for(int x=lowxview; x<highxview; x++)
@@ -78,6 +110,8 @@ void drawworld(){
 	glDisableClientState(GL_VERTEX_ARRAY);
 	glDisableClientState(GL_TEXTURE_COORD_ARRAY);
 	glDisable(GL_TEXTURE_2D);
+
+//	SKYBOX_Finalize();
 	
 	//turn off lighting
 	glDisable(GL_LIGHTING);

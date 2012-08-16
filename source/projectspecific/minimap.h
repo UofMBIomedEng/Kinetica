@@ -187,7 +187,7 @@ void drawminimap(){
 	for(int a=0;a<4*2;a++)
 		minimapcoord[a]/=3.5;	
 	//position
-	float xposonmap=(float)((((float)playerxpos-worldtilesize*5.8)/((float)worldgridsizex*worldtilesize))-0.5)*minimaptexturexuse;
+	float xposonmap=(float)((((float)playerxpos-worldtilesize*0.5)/((float)worldgridsizex*worldtilesize))-0.5)*minimaptexturexuse;
 	float zposonmap=(float)((((float)playerzpos+worldtilesize*0.5)/((float)worldgridsizez*worldtilesize))-0.5)*minimaptexturezuse;
 	for(int a=0;a<4;a++){
 		minimapcoord[a*2+0]+=xposonmap;
