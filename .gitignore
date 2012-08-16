@@ -35,7 +35,7 @@
 *.opensdf
 *.unsuccessfulbuild
 ipch/
-obj/
+
 [Bb]in
 [Dd]ebug*/
 [Rr]elease*/
